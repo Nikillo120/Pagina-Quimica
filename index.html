@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química Bachillerato - Tu Guía para el Éxito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary: #10b981;
+            --accent: #f97316;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            padding: 0 1rem;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .navbar-menu {
+            display: none;
+            gap: 0.5rem;
+        }
+
+        .navbar-menu a {
+            padding: 0.5rem 1rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--primary);
+        }
+
+        .navbar-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        @media (min-width: 768px) {
+            .navbar-menu {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: none;
+            }
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://d2xsxph8kpxj0f.cloudfront.net/310519663133426289/GLFyTLZQQ3NbPCb9GrVB32/hero-chemistry-lab-HaNxnxbyC3QicCkHvhQAxL.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* SECTION */
+        section {
+            padding: 5rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card.green {
+            border-left-color: var(--secondary);
+        }
+
+        .card.orange {
+            border-left-color: var(--accent);
+        }
+
+        .card.purple {
+            border-left-color: #a855f7;
+        }
+
+        .card.red {
+            border-left-color: #ef4444;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* COUNTDOWN */
+        .countdown-box {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .countdown-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            color: #6b7280;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-box {
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .content-box p {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .content-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #6b7280;
+        }
+
+        .content-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            padding: 3rem 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .countdown-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="navbar-content">
+            <div class="navbar-logo">⚛️ Química Bachillerato</div>
+            <div class="navbar-menu" id="navMenu">
+                <a onclick="scrollToSection('hero')">Inicio</a>
+                <a onclick="scrollToSection('bloques')">Bloques</a>
+                <a onclick="scrollToSection('contenidos')">Contenidos</a>
+                <a onclick="scrollToSection('ebau')">EBAU</a>
+                <a onclick="scrollToSection('recursos')">Recursos</a>
+            </div>
+            <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Domina la Química de Bachillerato</h1>
+            <p>Tu guía completa para entender cada concepto, resolver cada problema y triunfar en la EBAU</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('bloques')">Explorar Bloques Temáticos →</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('ebau')">Ver Recursos EBAU</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUES TEMÁTICOS -->
+    <section id="bloques" style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bloques Temáticos según Currículo</h2>
+                <p>Contenidos organizados por bloques oficiales del Ministerio de Educación</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card fade-in" style="animation-delay: 0ms;">
+                    <div class="card-icon">⚛️</div>
+                    <h3>Enlace y Estructura Atómica</h3>
+                    <p>Modelos cuánticos, configuración electrónica y geometría molecular (RPECV)</p>
+                    <div class="card-tags">
+                        <span class="tag">Configuración</span>
+                        <span class="tag">RPECV</span>
+                        <span class="tag">Geometría</span>
+                    </div>
+                </div>
+
+                <div class="card green fade-in" style="animation-delay: 100ms;">
+                    <div class="card-icon">🔥</div>
+                    <h3>Termoquímica y Cinética</h3>
+                    <p>Ley de Hess, entalpías y factores que afectan a la velocidad de reacción</p>
+                    <div class="card-tags">
+                        <span class="tag">Ley de Hess</span>
+                        <span class="tag">Entalpías</span>
+                        <span class="tag">Velocidad</span>
+                    </div>
+                </div>
+
+                <div class="card purple fade-in" style="animation-delay: 200ms;">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Equilibrio Químico</h3>
+                    <p>Constantes Kc y Kp, y el principio de Le Châtelier</p>
+                    <div class="card-tags">
+                        <span class="tag">Kc y Kp</span>
+                        <span class="tag">Le Châtelier</span>
+                        <span class="tag">Equilibrio</span>
+                    </div>
+                </div>
+
+                <div class="card orange fade-in" style="animation-delay: 300ms;">
+                    <div class="card-icon">🧪</div>
+                    <h3>Ácido-Base</h3>
+                    <p>Cálculo de pH, valoraciones y neutralizaciones</p>
+                    <div class="card-tags">
+                        <span class="tag">pH</span>
+                        <span class="tag">Valoraciones</span>
+                        <span class="tag">Neutralización</span>
+                    </div>
+                </div>
+
+                <div class="card red fade-in" style="animation-delay: 400ms;">
+                    <div class="card-icon">⚡</div>
+                    <h3>Redox</h3>
+                    <p>Ajuste de reacciones por el método ion-electrón y celdas galvánicas</p>
+                    <div class="card-tags">
+                        <span class="tag">Ion-electrón</span>
+                        <span class="tag">Galvánicas</span>
+                        <span class="tag">Redox</span>
+                    </div>
+                </div>
+
+                <div class="card fade-in" style="animation-delay: 500ms;">
+                    <div class="card-icon">🧬</div>
+                    <h3>Química Orgánica</h3>
+                    <p>Nomenclatura IUPAC, reacciones y mecanismos de síntesis</p>
+                    <div class="card-tags">
+                        <span class="tag">IUPAC</span>
+                        <span class="tag">Reacciones</span>
+                        <span class="tag">Síntesis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA EBAU -->
+    <section id="ebau" style="background: linear-gradient(135deg, #dbeafe 0%, #dbeafe 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cuenta Atrás EBAU</h2>
+                <p>Prepárate con tiempo. Cada día cuenta en tu camino hacia la universidad.</p>
+            </div>
+
+            <div class="countdown-box">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Tiempo hasta la EBAU</h3>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">95</div>
+                        <div class="countdown-label">Días</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">12</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">30</div>
+                        <div class="countdown-label">Minutos</div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(to right, var(--primary), var(--primary-light)); color: white; border-radius: 0.5rem; padding: 2rem; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Últimos Exámenes Resueltos</h3>
+                    <p style="margin-bottom: 1.5rem;">Accede a los exámenes de años anteriores completamente resueltos y explicados paso a paso.</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn btn-primary" style="background: white; color: var(--primary);" onclick="alert('Descargando EBAU 2024...')">📥 EBAU 2024</button>
+                        <button class="btn btn-primary" style="background: white; color: var(--primary);" onclick="alert('Descargando EBAU 2023...')">📥 EBAU 2023</button>
+                        <button class="btn btn-primary" style="background: white; color: var(--primary);" onclick="alert('Descargando EBAU 2022...')">📥 EBAU 2022</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENIDOS -->
+    <section id="contenidos">
+        <div class="container content-section">
+            <div class="section-title">
+                <h2>Formulación Inorgánica</h2>
+                <p>Base fundamental de la asignatura</p>
+            </div>
+
+            <div class="content-box">
+                <h3>1.1. La Tabla Periódica</h3>
+                <p>La tabla periódica organiza los elementos según su número atómico y nos permite predecir su comportamiento químico.</p>
+                <ul>
+                    <li><strong>Metales:</strong> Tendencia a ceder electrones (números de oxidación positivos)</li>
+                    <li><strong>No metales:</strong> Tendencia a ganar electrones (números de oxidación negativos)</li>
+                    <li><strong>Gases nobles:</strong> Grupo 18, número de oxidación 0 (muy estables)</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h3>1.2. Valencia vs. Número de Oxidación</h3>
+                <p>Aunque parecen lo mismo, tienen diferencias importantes:</p>
+                <ul>
+                    <li><strong>Número de oxidación:</strong> Indica los electrones que un átomo gana o cede. Tiene signo (+ o -)</li>
+                    <li><strong>Valencia:</strong> Es el número de electrones que intercambia, pero sin signo</li>
+                </ul>
+                <p><strong>Ejemplo:</strong> En agua (H₂O): H tiene número de oxidación +1 y valencia 1; O tiene número de oxidación -2 y valencia 2</p>
+            </div>
+
+            <div class="content-box">
+                <h3>1.3. Valencias Fijas (Imprescindibles)</h3>
+                <p>Estos elementos siempre tienen la misma valencia:</p>
+                <ul>
+                    <li><strong>Valencia 1:</strong> Grupo 1 (Li, Na, K, Rb, Cs, Fr) y Plata (Ag)</li>
+                    <li><strong>Valencia 2:</strong> Grupo 2 (Be, Mg, Ca, Sr, Ba, Ra), Zinc (Zn), Cadmio (Cd)</li>
+                    <li><strong>Valencia 3:</strong> Boro (B), Aluminio (Al), Escandio (Sc)</li>
+                </ul>
+            </div>
+
+            <div class="content-box" style="border-left-color: var(--secondary);">
+                <h3 style="color: var(--secondary);">2. Compuestos Binarios</h3>
+                <p><strong>Reglas Generales:</strong></p>
+                <ul>
+                    <li>Se escribe primero el elemento menos electronegativo (más "metálico")</li>
+                    <li>El número de oxidación del primer elemento pasa al subíndice del segundo, y viceversa</li>
+                    <li>Si ambos subíndices son divisibles por el mismo número, se deben simplificar</li>
+                </ul>
+                <p><strong>Tipos:</strong></p>
+                <ul>
+                    <li><strong>Óxidos:</strong> El oxígeno actúa con -2. Ej: Fe₂O₃</li>
+                    <li><strong>Hidruros:</strong> Metálicos (H con -1), No metálicos (H con +1)</li>
+                    <li><strong>Sales Binarias:</strong> Metal + No metal. Ej: NaCl</li>
+                </ul>
+            </div>
+
+            <div class="content-box" style="border-left-color: var(--accent);">
+                <h3 style="color: var(--accent);">3. Compuestos Ternarios</h3>
+                <ul>
+                    <li><strong>Hidróxidos:</strong> Metal + grupo OH. Fórmula: M(OH)ₙ. Ej: NaOH</li>
+                    <li><strong>Oxoácidos:</strong> H + No metal + O. Sufijo -oso (menor oxidación), -ico (mayor)</li>
+                    <li><strong>Oxisales:</strong> "Si -oso, -ito" (Oso chiquito 🐻). "Si -ico, -ato" (Pico de pato 🦆)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEYES FUNDAMENTALES -->
+    <section id="leyes" style="background: #f9fafb;">
+        <div class="container content-section">
+            <div class="section-title">
+                <h2>Leyes Fundamentales y Gases</h2>
+                <p>Conceptos clave para resolver problemas</p>
+            </div>
+
+            <div class="content-box">
+                <h3>2.1. ¿Qué es un Mol?</h3>
+                <p>El mol es la unidad fundamental en química para medir la cantidad de sustancia. Es el puente entre el mundo microscópico (átomos y moléculas) y el macroscópico (gramos).</p>
+                <p><strong>Número de Avogadro (Nₐ):</strong> 1 mol de cualquier sustancia contiene <strong>6.022 × 10²³</strong> entidades elementales</p>
+            </div>
+
+            <div class="content-box">
+                <h3>2.2. Tipos de Masa</h3>
+                <ul>
+                    <li><strong>Masa Atómica (Mₐ):</strong> La masa de un átomo en unidades de masa atómica (u)</li>
+                    <li><strong>Masa Molecular (Mₘ):</strong> Suma de masas atómicas de todos los átomos de una molécula</li>
+                    <li><strong>Masa Molar (M):</strong> Masa de un mol de sustancia, expresada en g/mol</li>
+                </ul>
+            </div>
+
+            <div class="content-box" style="border-left-color: #f59e0b; background: #fef3c7;">
+                <h3 style="color: #d97706;">2.3. La Fórmula Maestra ✏️</h3>
+                <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #d97706; margin: 1rem 0;">n = m / M</p>
+                <ul>
+                    <li><strong>n:</strong> número de moles (mol)</li>
+                    <li><strong>m:</strong> masa de la muestra (g)</li>
+                    <li><strong>M:</strong> masa molar de la sustancia (g/mol)</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h3>3. Las Leyes de los Gases Ideales</h3>
+                <p><strong>Variables de Estado:</strong></p>
+                <ul>
+                    <li><strong>Presión (P):</strong> En atmósferas (atm) o mmHg</li>
+                    <li><strong>Volumen (V):</strong> En litros (L)</li>
+                    <li><strong>Temperatura (T):</strong> En Kelvin (K = °C + 273)</li>
+                    <li><strong>Cantidad (n):</strong> En moles (mol)</li>
+                </ul>
+                <p><strong>Las Tres Leyes:</strong></p>
+                <ul>
+                    <li><strong>Ley de Boyle (P-V):</strong> P₁V₁ = P₂V₂</li>
+                    <li><strong>Ley de Charles (V-T):</strong> V₁/T₁ = V₂/T₂</li>
+                    <li><strong>Ley de Gay-Lussac (P-T):</strong> P₁/T₁ = P₂/T₂</li>
+                </ul>
+            </div>
+
+            <div class="content-box" style="border-left-color: #8b5cf6; background: #f3e8ff;">
+                <h3 style="color: #7c3aed;">3.3. Ecuación General de Gases Ideales</h3>
+                <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #7c3aed; margin: 1rem 0;">PV = nRT</p>
+                <p>Donde <strong>R</strong> es la constante de los gases: <strong>0.082 atm·L/(mol·K)</strong></p>
+            </div>
+
+            <div class="content-box">
+                <h3>4. Leyes Ponderales de la Química</h3>
+                <ul>
+                    <li><strong>Ley de Lavoisier:</strong> "La materia ni se crea ni se destruye, solo se transforma". Masa reactivos = Masa productos</li>
+                    <li><strong>Ley de Proust:</strong> Cuando dos elementos se combinan, lo hacen en una relación de masas constante</li>
+                    <li><strong>Ley de Dalton:</strong> Si dos elementos forman más de un compuesto, las masas guardan una relación de números enteros sencillos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="recursos" style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recursos Disponibles</h2>
+                <p>Herramientas para tu preparación</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" style="text-align: center;">
+                    <div class="card-icon">📥</div>
+                    <h3>Descargar Apuntes</h3>
+                    <p>PDF con todos los temas explicados</p>
+                    <button class="btn btn-primary" onclick="alert('Descargando apuntes...')">Descargar</button>
+                </div>
+
+                <div class="card green" style="text-align: center;">
+                    <div class="card-icon">▶️</div>
+                    <h3>Ver Videos</h3>
+                    <p>Explicaciones en video de cada tema</p>
+                    <button class="btn btn-primary" style="background: var(--secondary);" onclick="alert('Abriendo videos...')">Ver Videos</button>
+                </div>
+
+                <div class="card orange" style="text-align: center;">
+                    <div class="card-icon">🎯</div>
+                    <h3>Practicar Tests</h3>
+                    <p>Preguntas interactivas para practicar</p>
+                    <button class="btn btn-primary" style="background: var(--accent);" onclick="alert('Iniciando test...')">Practicar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>Química Bachillerato</h4>
+                <p>Tu guía completa para dominar la química y triunfar en la EBAU.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Bloques Temáticos</h4>
+                <ul>
+                    <li><a href="#" onclick="scrollToSection('bloques'); return false;">Estructura Atómica</a></li>
+                    <li><a href="#" onclick="scrollToSection('leyes'); return false;">Leyes Fundamentales</a></li>
+                    <li><a href="#" onclick="scrollToSection('ebau'); return false;">Recursos EBAU</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#" onclick="scrollToSection('recursos'); return false;">Apuntes PDF</a></li>
+                    <li><a href="#" onclick="alert('Abriendo laboratorio...'); return false;">Laboratorio Virtual</a></li>
+                    <li><a href="#" onclick="scrollToSection('ebau'); return false;">Exámenes Resueltos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Química Bachillerato. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // SCROLL SUAVE
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('navMenu').style.display = 'none';
+            }
+        }
+
+        // TOGGLE MENU MÓVIL
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // CERRAR MENÚ AL HACER CLICK EN UN ENLACE
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.navbar-toggle');
+            if (!event.target.closest('nav')) {
+                menu.style.display = 'none';
+            }
+        });
+
+        // COUNTDOWN TIMER
+        function updateCountdown() {
+            const ebauDate = new Date(2026, 5, 15).getTime(); // 15 de junio
+            const now = new Date().getTime();
+            const diff = ebauDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+            }
+        }
+
+        // Actualizar countdown cada minuto
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // ANIMACIONES AL SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
